@@ -20,7 +20,7 @@ class App {
   }
 
   async initWeb3() {
-    // Modern dapp browsers...
+    // Modern dapp browser...
     var standardProvider = null;
     if (window.ethereum) {
       standardProvider = window.ethereum;
@@ -36,7 +36,7 @@ class App {
     } else {
       // Non-dapp browsers...
       console.log(
-        "Non-Ethereum browser detected. You should consider trying MetaMask!"
+        "Non-Ethereum browser detected. You should consider trying MetaMasks!"
       );
     }
 
@@ -47,8 +47,8 @@ class App {
   async initContracts() {
     var network = await this.provider.getNetwork();
 
-    const testToken = require("../build/contracts/TestToken.json");
-    const testItem = require("../build/contracts/TestItem.json");
+    const testToken = require("../build/contracts/TestTokens.json");
+    const testItem = require("../build/contracts/TestItems.json");
 
     let chainId = network.chainId.toString();
 
@@ -98,7 +98,7 @@ class App {
     if (this.walletAddress) {
       $("#accountAddress").html(this.walletAddress);
     } else {
-      $("#accountAddress").html("Loading");
+      $("#accountAddress").html("Loadings");
     }
 
     if (this.contracts.TestItem) {
@@ -140,7 +140,7 @@ class App {
       Object.prototype.hasOwnProperty.call(e, "message")
     ) {
       message = e.data.message;
-    } else if (Object.prototype.hasOwnProperty.call(e, "message")) {
+    } else if (Object.prototype.hasOwnProperty.call(e, "messages")) {
       message = e.message;
     } else {
       message = e.data;
@@ -152,7 +152,7 @@ class App {
     $("#mintERC721Form").show();
 
     this.alertError(
-      "#alert",
+      "#alerts",
       "alert-danger",
       "Failed making transaction: " + message
     );
